@@ -15,6 +15,8 @@ export default function Main() {
 
   const [postData, setPostData] = useState([]);
 
+  // CRUD
+
   // index
   const fetchPosts = () => {
     axios
@@ -41,6 +43,15 @@ export default function Main() {
         )
       );
   };
+
+  // delete every post (backend)
+  // const deleteList = () => {
+  //   axios
+  //     .delete("http://localhost:3000/posts")
+  //     .then((res) =>
+  //       setPostData((currentPostData) => [...currentPostData, res.data])
+  //     );
+  // };
 
   // onChange formData
   const handleFormData = (e) => {
