@@ -56,8 +56,12 @@ main hr {
   align-items: center;
   list-style: none;
   margin: 0.625rem 0;
-  border-bottom: 0.125rem solid lightgrey;
   padding-bottom: 1.25rem;
+  background-color: rgb(243, 243, 243);
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .article__title {
@@ -75,6 +79,7 @@ main hr {
   border-radius: 0.5rem;
   transition: 0.4s;
   margin-top: 0.625rem;
+  background-color: lightgrey;
 }
 
 .article__btn--delete:hover {
@@ -83,7 +88,7 @@ main hr {
 }
 
 .article__btn--delete:active {
-  background-color: lightgrey;
+  background-color: grey;
 }
 
 .article__btn--deleteList {
@@ -106,6 +111,18 @@ main hr {
 
 .article__btn--deleteList:active {
   background-color: lightgrey;
+}
+
+.post__image {
+  width: 18.75rem;
+  height: 12.5rem;
+  margin: 1.875rem 0;
+}
+
+.post__image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.25rem;
 }
 
 /* ADD ARTICLE FORM */

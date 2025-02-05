@@ -1,16 +1,25 @@
-import { useState } from "react";
-import articles from "../data/articlesData";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Main() {
   const [formData, setFormData] = useState({
+    id: 0,
     title: "",
     author: "",
     content: "",
+    image: "",
+    tags: "",
     category: "",
     available: false,
   });
 
-  const [articlesData, setArticleData] = useState(articles);
+  const [postData, setPostData] = useState([]);
+
+  const fetchPosts = () => {
+    axios
+      .get("http://localhost:3000/posts")
+      .then((res) => setPostData(res.data));
+  };
 
   const handleFormData = (e) => {
     const value =
@@ -24,7 +33,7 @@ export default function Main() {
 
   const handleSubmit = (e) => {
     const newArticle = {
-      id: articlesData[articlesData.length - 1].id + 1,
+      id: postData[postData.length - 1].id + 1,
       title: formData.title,
       url: "#",
       author: formData.author,
@@ -35,7 +44,7 @@ export default function Main() {
 
     e.preventDefault();
 
-    setArticleData([...articlesData, newArticle]);
+    setPostData([...postData, newArticle]);
 
     // Reset input after submit
     setFormData({
@@ -48,7 +57,7 @@ export default function Main() {
   };
 
   const removeArticle = (id) => {
-    const updatedArticles = articlesData.filter((article) => {
+    const updatedArticles = postData.filter((article) => {
       return article.id !== id;
     });
     setArticleData(updatedArticles);
@@ -58,25 +67,37 @@ export default function Main() {
     setArticleData([]);
   };
 
+  useEffect(fetchPosts, []);
+
   return (
     <main>
       <section>
         <div className="container">
           <ul className="articles-list">
-            {articlesData.map((article) => {
+            {postData.map((post) => {
               return (
-                <li key={article.id} className="article">
-                  <a href={article.url} className="article__title">
-                    <h2>{article.title}</h2>
+                <li key={post.id} className="article">
+                  <a href={post.url} className="article__title">
+                    <h2>{post.title}</h2>
                   </a>
-                  <h3 className="padding-bottom-4">{article.author}</h3>
-                  <p className="padding-bottom-4">{article.content}</p>
-                  <p className="padding-bottom-4">{article.category}</p>
+                  <h3 className="padding-bottom-4">{post.author}</h3>
+                  <div className="post__image">
+                    <img src={post.image} alt={post.title} />
+                  </div>
+                  <p className="padding-bottom-4">{post.content}</p>
                   <p className="padding-bottom-4">
-                    {article.available ? "Pubblicato" : "Non pubblicato"}
+                    <strong>TAGS: </strong>
+                    {post.tags.join(", ")}
+                  </p>
+                  <p className="padding-bottom-4">
+                    <strong>Categoria: </strong>
+                    {post.category}
+                  </p>
+                  <p className="padding-bottom-4">
+                    {post.available ? "Pubblicato" : "Non pubblicato"}
                   </p>
                   <button
-                    onClick={() => removeArticle(article.id)}
+                    onClick={() => removeArticle(post.id)}
                     className="article__btn--delete"
                   >
                     <i className="fa-solid fa-trash"></i>
@@ -85,7 +106,7 @@ export default function Main() {
               );
             })}
           </ul>
-          {articlesData.length > 0 && (
+          {postData.length > 0 && (
             <button className="article__btn--deleteList" onClick={removeList}>
               Cancella lista
             </button>
