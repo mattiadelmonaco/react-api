@@ -6,7 +6,7 @@ const posts = [
     content:
       "Un dolce classico della tradizione, semplice da preparare ma sempre delizioso. Scopri la ricetta per un ciambellone soffice e profumato.",
     image: "http://localhost:3000/images/ciambellone.jpeg",
-    tags: ["dolci", "tradizione", "ciambellone", "ricette facili"],
+    tags: "dolci, tradizione, ciambellone, ricette facili",
     category: "Dolce",
     available: true,
   },
@@ -17,9 +17,8 @@ const posts = [
     content:
       "Un'idea originale e sana per uno snack croccante e colorato. Ecco come preparare dei cracker alla barbabietola fatti in casa.",
     image: "http://localhost:3000/images/cracker_barbabietola.jpeg",
-    tags: ["snack", "barbabietola", "healthy", "ricette vegane"],
+    tags: "snack, barbabietola, healthy, ricette vegane",
     category: "Snack",
-
     available: true,
   },
   {
@@ -29,9 +28,8 @@ const posts = [
     content:
       "Un piatto sorprendente, croccante all'esterno e morbido dentro. Perfetto per la colazione o uno sfizio pomeridiano.",
     image: "http://localhost:3000/images/pane_fritto_dolce.jpeg",
-    tags: ["pane", "dolci fritti", "colazione", "sfiziosità"],
+    tags: "pane, dolci fritti, colazione, sfiziosità",
     category: "Dolce",
-
     available: true,
   },
   {
@@ -41,9 +39,8 @@ const posts = [
     content:
       "Trasforma un piatto tradizionale con l'aggiunta del colore vibrante della barbabietola. Una ricetta semplice e scenografica.",
     image: "http://localhost:3000/images/pasta_barbabietola.jpeg",
-    tags: ["pasta", "barbabietola", "vegetariano", "creativo"],
+    tags: "pasta, barbabietola, vegetariano, creativo",
     category: "Pasta",
-
     available: true,
   },
   {
@@ -53,9 +50,8 @@ const posts = [
     content:
       "Un dolce della tradizione lombarda che celebra i sapori genuini di una volta. Ecco la ricetta passo passo.",
     image: "http://localhost:3000/images/torta_paesana.jpeg",
-    tags: ["dolci", "tradizione", "torta paesana", "Lombardia"],
+    tags: "dolci, tradizione, torta paesana, Lombardia",
     category: "Dolce",
-
     available: true,
   },
 ];

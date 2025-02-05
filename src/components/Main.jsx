@@ -15,18 +15,34 @@ export default function Main() {
 
   const [postData, setPostData] = useState([]);
 
+  // index
   const fetchPosts = () => {
     axios
       .get("http://localhost:3000/posts")
       .then((res) => setPostData(res.data));
   };
 
+  // create
   const addPost = () => {
     axios
       .post("http://localhost:3000/posts", formData)
-      .then((res) => setPostData(res.data));
+      .then((res) =>
+        setPostData((currentPostData) => [...currentPostData, res.data])
+      );
   };
 
+  // delete
+  const deletePost = (id) => {
+    axios
+      .delete(`http://localhost:3000/posts/${id}`)
+      .then((res) =>
+        setPostData((currentPostData) =>
+          currentPostData.filter((post) => post.id !== id)
+        )
+      );
+  };
+
+  // onChange formData
   const handleFormData = (e) => {
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
@@ -37,7 +53,10 @@ export default function Main() {
     }));
   };
 
+  // to form's submit
   const handleSubmit = (e) => {
+    e.preventDefault();
+
     const newArticle = {
       id: postData[postData.length - 1].id + 1,
       title: formData.title,
@@ -48,8 +67,6 @@ export default function Main() {
       category: formData.category,
       available: formData.available,
     };
-
-    e.preventDefault();
 
     setPostData([...postData, newArticle]);
 
@@ -65,6 +82,7 @@ export default function Main() {
     });
   };
 
+  // remove post (frontend)
   const removeArticle = (id) => {
     const updatedArticles = postData.filter((article) => {
       return article.id !== id;
@@ -72,10 +90,12 @@ export default function Main() {
     setPostData(updatedArticles);
   };
 
+  // remove every post (frontend)
   const removeList = () => {
     setPostData([]);
   };
 
+  // get posts at the page's load
   useEffect(fetchPosts, []);
 
   return (
@@ -106,7 +126,10 @@ export default function Main() {
                     {post.available ? "Pubblicato" : "Non pubblicato"}
                   </p>
                   <button
-                    onClick={() => removeArticle(post.id)}
+                    onClick={() => {
+                      removeArticle(post.id);
+                      deletePost(post.id);
+                    }}
                     className="article__btn--delete"
                   >
                     <i className="fa-solid fa-trash"></i>
@@ -168,7 +191,7 @@ export default function Main() {
               className="form__inputArea"
               type="text"
               name="tags"
-              placeholder="Inserisci i tags del piatto"
+              placeholder="Inserisci i tag - ricorda di separarli con la virgola"
               value={formData.tags}
               onChange={handleFormData}
               required
