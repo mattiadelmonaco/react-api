@@ -1,0 +1,180 @@
+/* RESET */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* GENERAL */
+
+body {
+  font-family: "Open Sans", serif;
+}
+
+.container {
+  max-width: 62.5rem;
+  margin: 0 auto;
+}
+
+.padding-bottom-4 {
+  padding-bottom: 0.25rem;
+}
+
+/* HEADER */
+
+header {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+header h1 {
+  text-align: center;
+  background-color: darkorange;
+  color: #fff;
+  padding: 0.625rem 0;
+}
+
+/* MAIN */
+
+main hr {
+  color: lightgrey;
+  border: 1px solid;
+}
+
+/* ARTICLES SECTION */
+
+.articles-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.875rem 0;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  margin: 0.625rem 0;
+  border-bottom: 0.125rem solid lightgrey;
+  padding-bottom: 1.25rem;
+}
+
+.article__title {
+  font-size: 1.25rem;
+  color: black;
+  text-decoration: none;
+}
+
+.article__btn--delete {
+  width: 35px;
+  height: 35px;
+  color: rgb(183, 0, 0);
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  transition: 0.4s;
+  margin-top: 0.625rem;
+}
+
+.article__btn--delete:hover {
+  transform: scale(1.25);
+  transition: 0.4s;
+}
+
+.article__btn--delete:active {
+  background-color: lightgrey;
+}
+
+.article__btn--deleteList {
+  display: flex;
+  justify-self: center;
+  padding: 0.375rem;
+  margin-bottom: 1.875rem;
+  font-size: 1rem;
+  color: rgb(183, 0, 0);
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  transition: 0.4s;
+}
+
+.article__btn--deleteList:hover {
+  transform: scale(1.1);
+  transition: 0.4s;
+}
+
+.article__btn--deleteList:active {
+  background-color: lightgrey;
+}
+
+/* ADD ARTICLE FORM */
+
+.form__addArticle {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 1.875rem 0;
+}
+
+.form__inputArea {
+  width: 21.875rem;
+  margin: 0.625rem;
+  padding: 0.375rem;
+  border-radius: 0.5rem;
+  border: 0.125rem solid lightgray;
+}
+
+.form__inputArea:focus {
+  outline: none;
+  border: 2px solid rgb(255, 180, 88);
+}
+
+.form__contentArea {
+  height: 6.25rem;
+  max-height: 12.5rem;
+  min-height: 1.875rem;
+  max-width: 62.5rem;
+  min-width: 21.875rem;
+  font-family: "Open Sans", serif;
+}
+
+.form__select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form__inputArea--selector {
+  width: 6.25rem;
+}
+
+.form__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+}
+
+.form__checkbox--input {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.form__submitBtn {
+  padding: 0.375rem 0.75rem;
+  margin: 1.25rem 0;
+  font-size: large;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.form__submitBtn:hover {
+  transform: scale(1.1);
+  transition: 0.4s;
+}
+
+.form__submitBtn:active {
+  background-color: lightgray;
+}
