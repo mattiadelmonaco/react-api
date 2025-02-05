@@ -21,11 +21,11 @@ export default function Main() {
       .then((res) => setPostData(res.data));
   };
 
-  // const addPost = () => {
-  //   axios
-  //     .post("http://localhost:3000/posts", formData)
-  //     .then((res) => setPostData(res.data));
-  // };
+  const addPost = () => {
+    axios
+      .post("http://localhost:3000/posts", formData)
+      .then((res) => setPostData(res.data));
+  };
 
   const handleFormData = (e) => {
     const value =
@@ -41,9 +41,10 @@ export default function Main() {
     const newArticle = {
       id: postData[postData.length - 1].id + 1,
       title: formData.title,
-      url: "#",
+      image: formData.image,
       author: formData.author,
       content: formData.content,
+      tags: formData.tags,
       category: formData.category,
       available: formData.available,
     };
@@ -76,7 +77,6 @@ export default function Main() {
   };
 
   useEffect(fetchPosts, []);
-  // useEffect(addPost, [handleSubmit]);
 
   return (
     <main>
@@ -205,7 +205,7 @@ export default function Main() {
                 onChange={handleFormData}
               />
             </div>
-            <button className="form__submitBtn" type="submit">
+            <button onClick={addPost} className="form__submitBtn" type="submit">
               Aggiungi articolo
             </button>
           </form>
