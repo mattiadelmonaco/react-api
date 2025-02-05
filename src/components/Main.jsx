@@ -21,6 +21,12 @@ export default function Main() {
       .then((res) => setPostData(res.data));
   };
 
+  // const addPost = () => {
+  //   axios
+  //     .post("http://localhost:3000/posts", formData)
+  //     .then((res) => setPostData(res.data));
+  // };
+
   const handleFormData = (e) => {
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
@@ -50,7 +56,9 @@ export default function Main() {
     setFormData({
       title: "",
       author: "",
+      image: "",
       content: "",
+      tags: "",
       category: "",
       available: false,
     });
@@ -60,14 +68,15 @@ export default function Main() {
     const updatedArticles = postData.filter((article) => {
       return article.id !== id;
     });
-    setArticleData(updatedArticles);
+    setPostData(updatedArticles);
   };
 
   const removeList = () => {
-    setArticleData([]);
+    setPostData([]);
   };
 
   useEffect(fetchPosts, []);
+  // useEffect(addPost, [handleSubmit]);
 
   return (
     <main>
@@ -87,7 +96,7 @@ export default function Main() {
                   <p className="padding-bottom-4">{post.content}</p>
                   <p className="padding-bottom-4">
                     <strong>TAGS: </strong>
-                    {post.tags.join(", ")}
+                    {post.tags}
                   </p>
                   <p className="padding-bottom-4">
                     <strong>Categoria: </strong>
@@ -137,12 +146,30 @@ export default function Main() {
               onChange={handleFormData}
               required
             />
+            <input
+              className="form__inputArea"
+              type="url"
+              name="image"
+              placeholder="Inserisci URL immagine"
+              value={formData.image}
+              onChange={handleFormData}
+              required
+            />
             <textarea
               className="form__inputArea form__contentArea"
               type="text"
               name="content"
               placeholder="Inserisci contenuto nuovo articolo"
               value={formData.content}
+              onChange={handleFormData}
+              required
+            />
+            <input
+              className="form__inputArea"
+              type="text"
+              name="tags"
+              placeholder="Inserisci i tags del piatto"
+              value={formData.tags}
               onChange={handleFormData}
               required
             />
@@ -156,10 +183,15 @@ export default function Main() {
                 onChange={handleFormData}
                 required
               >
-                <option value="">---</option>
-                <option value="FrontEnd">FrontEnd</option>
-                <option value="BackEnd">BackEnd</option>
-                <option value="UI/UX">UI/UX</option>
+                <option value="" disabled>
+                  ---
+                </option>
+                <option value="Dolce">Dolce</option>
+                <option value="Snack">Snack</option>
+                <option value="Pasta">Pasta</option>
+                <option value="Verdura">Verdura</option>
+                <option value="Pesce">Pesce</option>
+                <option value="Carne">Carne</option>
               </select>
             </div>
             <div className="form__checkbox">
