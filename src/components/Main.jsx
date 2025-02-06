@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Form from "./Form";
+import PostsList from "./PostsList";
 
 const initialData = {
   id: 0,
@@ -95,47 +96,21 @@ export default function Main() {
     <main>
       <section>
         <div className="container">
-          <ul className="posts-list">
-            {postData.map((post) => {
-              return (
-                <li key={post.id} className="post">
-                  <a href={post.url} className="post__title">
-                    <h2>{post.title}</h2>
-                  </a>
-                  <h3 className="padding-bottom-4">{post.author}</h3>
-                  <div className="post__image">
-                    <img src={post.image} alt={post.title} />
-                  </div>
-                  <p className="padding-bottom-4">{post.content}</p>
-                  <p className="padding-bottom-4">
-                    <strong>TAGS: </strong>
-                    {post.tags}
-                  </p>
-                  <p className="padding-bottom-4">
-                    <strong>Categoria: </strong>
-                    {post.category}
-                  </p>
-                  <p className="padding-bottom-4">
-                    {post.available ? "Pubblicato" : "Non pubblicato"}
-                  </p>
-                  <button
-                    onClick={() => {
-                      // removePost(post.id);
-                      deletePost(post.id);
-                    }}
-                    className="post__btn--delete"
-                  >
-                    <i className="fa-solid fa-trash"></i>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+          {/* POST LIST */}
+
+          <PostsList postData={postData} deletePost={deletePost} />
+
+          {/* /POSTLIST */}
+
+          {/* BTN DELETE POST LIST */}
+
           {postData.length > 0 && (
             <button className="post__btn--deleteList" onClick={deleteList}>
               Cancella lista
             </button>
           )}
+
+          {/* /BTN DELETE POST LIST */}
         </div>
       </section>
       <hr />
