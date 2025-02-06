@@ -46,14 +46,10 @@ export default function Main() {
       );
   };
 
-  // delete every post (backend)
-  // const deleteList = () => {
-  //   axios
-  //     .delete("http://localhost:3000/posts")
-  //     .then((res) =>
-  //       setPostData((currentPostData) => [...currentPostData, res.data])
-  //     );
-  // };
+  // delete all
+  const deleteList = () => {
+    axios.delete("http://localhost:3000/posts").then(() => setPostData([]));
+  };
 
   // onChange formData
   const handleFormData = (e) => {
@@ -77,17 +73,17 @@ export default function Main() {
   };
 
   // remove post (frontend)
-  const removeArticle = (id) => {
-    const updatedArticles = postData.filter((article) => {
-      return article.id !== id;
-    });
-    setPostData(updatedArticles);
-  };
+  // const removeArticle = (id) => {
+  //   const updatedArticles = postData.filter((article) => {
+  //     return article.id !== id;
+  //   });
+  //   setPostData(updatedArticles);
+  // };
 
   // remove every post (frontend)
-  const removeList = () => {
-    setPostData([]);
-  };
+  // const removeList = () => {
+  //   setPostData([]);
+  // };
 
   // get posts at the page's load
   useEffect(fetchPosts, []);
@@ -121,7 +117,7 @@ export default function Main() {
                   </p>
                   <button
                     onClick={() => {
-                      removeArticle(post.id);
+                      // removeArticle(post.id);
                       deletePost(post.id);
                     }}
                     className="article__btn--delete"
@@ -133,7 +129,7 @@ export default function Main() {
             })}
           </ul>
           {postData.length > 0 && (
-            <button className="article__btn--deleteList" onClick={removeList}>
+            <button className="article__btn--deleteList" onClick={deleteList}>
               Cancella lista
             </button>
           )}
