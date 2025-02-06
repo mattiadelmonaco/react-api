@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+const initialData = {
+  id: 0,
+  title: "",
+  author: "",
+  content: "",
+  image: "",
+  tags: "",
+  category: "",
+  available: false,
+};
+
 export default function Main() {
-  const [formData, setFormData] = useState({
-    id: 0,
-    title: "",
-    author: "",
-    content: "",
-    image: "",
-    tags: "",
-    category: "",
-    available: false,
-  });
+  const [formData, setFormData] = useState(initialData);
 
   const [postData, setPostData] = useState([]);
 
@@ -29,7 +31,7 @@ export default function Main() {
     axios
       .post("http://localhost:3000/posts", formData)
       .then((res) =>
-        setPostData((currentPostData) => [...currentPostData, res.data])
+        setPostData((currentPostData) => [...currentPostData, res.data.post])
       );
   };
 
@@ -37,7 +39,7 @@ export default function Main() {
   const deletePost = (id) => {
     axios
       .delete(`http://localhost:3000/posts/${id}`)
-      .then((res) =>
+      .then(() =>
         setPostData((currentPostData) =>
           currentPostData.filter((post) => post.id !== id)
         )
@@ -68,29 +70,10 @@ export default function Main() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newArticle = {
-      id: postData[postData.length - 1].id + 1,
-      title: formData.title,
-      image: formData.image,
-      author: formData.author,
-      content: formData.content,
-      tags: formData.tags,
-      category: formData.category,
-      available: formData.available,
-    };
-
-    setPostData([...postData, newArticle]);
+    addPost();
 
     // Reset input after submit
-    setFormData({
-      title: "",
-      author: "",
-      image: "",
-      content: "",
-      tags: "",
-      category: "",
-      available: false,
-    });
+    setFormData(initialData);
   };
 
   // remove post (frontend)
@@ -239,7 +222,7 @@ export default function Main() {
                 onChange={handleFormData}
               />
             </div>
-            <button onClick={addPost} className="form__submitBtn" type="submit">
+            <button className="form__submitBtn" type="submit">
               Aggiungi articolo
             </button>
           </form>
