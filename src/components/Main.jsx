@@ -51,6 +51,8 @@ export default function Main() {
     axios.delete("http://localhost:3000/posts").then(() => setPostData([]));
   };
 
+  // STATE FUNCTIONS
+
   // onChange formData
   const handleFormData = (e) => {
     const value =
