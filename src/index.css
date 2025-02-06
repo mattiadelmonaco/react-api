@@ -42,16 +42,16 @@ main hr {
   border: 1px solid;
 }
 
-/* ARTICLES SECTION */
+/* POSTS SECTION */
 
-.articles-list {
+.posts-list {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 1.875rem 0;
 }
 
-.article {
+.post {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,13 +65,13 @@ main hr {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.article__title {
+.post__title {
   font-size: 1.25rem;
   color: black;
   text-decoration: none;
 }
 
-.article__btn--delete {
+.post__btn--delete {
   width: 35px;
   height: 35px;
   color: rgb(183, 0, 0);
@@ -83,16 +83,16 @@ main hr {
   background-color: lightgrey;
 }
 
-.article__btn--delete:hover {
+.post__btn--delete:hover {
   transform: scale(1.25);
   transition: 0.4s;
 }
 
-.article__btn--delete:active {
+.post__btn--delete:active {
   background-color: grey;
 }
 
-.article__btn--deleteList {
+.post__btn--deleteList {
   display: flex;
   justify-self: center;
   padding: 0.375rem;
@@ -105,12 +105,12 @@ main hr {
   transition: 0.4s;
 }
 
-.article__btn--deleteList:hover {
+.post__btn--deleteList:hover {
   transform: scale(1.1);
   transition: 0.4s;
 }
 
-.article__btn--deleteList:active {
+.post__btn--deleteList:active {
   background-color: lightgrey;
 }
 
@@ -126,9 +126,9 @@ main hr {
   border-radius: 1.25rem;
 }
 
-/* ADD ARTICLE FORM */
+/* ADD POST FORM */
 
-.form__addArticle {
+.form__addPost {
   display: flex;
   align-items: center;
   flex-direction: column;

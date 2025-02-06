@@ -73,11 +73,11 @@ export default function Main() {
   };
 
   // remove post (frontend)
-  // const removeArticle = (id) => {
-  //   const updatedArticles = postData.filter((article) => {
-  //     return article.id !== id;
+  // const removePost = (id) => {
+  //   const updatedPosts = postData.filter((post) => {
+  //     return post.id !== id;
   //   });
-  //   setPostData(updatedArticles);
+  //   setPostData(updatedPosts);
   // };
 
   // remove every post (frontend)
@@ -92,11 +92,11 @@ export default function Main() {
     <main>
       <section>
         <div className="container">
-          <ul className="articles-list">
+          <ul className="posts-list">
             {postData.map((post) => {
               return (
-                <li key={post.id} className="article">
-                  <a href={post.url} className="article__title">
+                <li key={post.id} className="post">
+                  <a href={post.url} className="post__title">
                     <h2>{post.title}</h2>
                   </a>
                   <h3 className="padding-bottom-4">{post.author}</h3>
@@ -117,10 +117,10 @@ export default function Main() {
                   </p>
                   <button
                     onClick={() => {
-                      // removeArticle(post.id);
+                      // removePost(post.id);
                       deletePost(post.id);
                     }}
-                    className="article__btn--delete"
+                    className="post__btn--delete"
                   >
                     <i className="fa-solid fa-trash"></i>
                   </button>
@@ -129,7 +129,7 @@ export default function Main() {
             })}
           </ul>
           {postData.length > 0 && (
-            <button className="article__btn--deleteList" onClick={deleteList}>
+            <button className="post__btn--deleteList" onClick={deleteList}>
               Cancella lista
             </button>
           )}
@@ -140,7 +140,7 @@ export default function Main() {
         <div className="container">
           {/* FORM */}
 
-          <form onSubmit={handleSubmit} className="form__addArticle">
+          <form onSubmit={handleSubmit} className="form__addPost">
             <input
               className="form__inputArea"
               type="text"
